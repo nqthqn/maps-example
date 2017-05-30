@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testing!</title>
+    <script type="text/javascript" src="js/leaflet.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css">
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+    Here is a map
+    <div id='map' style='width: 400px; height: 300px;'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibnF0aHFuIiwiYSI6ImNqM2MybzBtZDAwMWsycW50OGs2dWd2ZjkifQ.Kr4J6IKJBPpshNQMO0Mmmw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/outdoors-v9',
+        center: [-122.486052, 37.830348],
+        zoom: 15
+    });
+
+    // geojson!
+    map.on('load', function () {
+        map.addLayer(
+            {{ .Site.Data.Stuff }}
+        );
+    });
+</script>
+
+</body>
+</html>
